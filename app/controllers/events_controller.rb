@@ -11,8 +11,17 @@ class EventsController < ApplicationController
     else
       flash.now[:alert] = "Event nije kreiran!"
       render "new"
-    end    
+    end
   end
+
+  def show
+    @event = Event.find(params[:id])
+  end
+
+  def index
+    @events = Event.all
+  end
+
 
   private
     def event_params
