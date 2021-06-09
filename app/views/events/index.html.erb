@@ -6,8 +6,8 @@
   <div>
     <h4><%= link_to event.title, event_path(event) %></h4>
     <p><%= event.description %></p>
-    <p><%= event.start_date %></p>
-    <p><%= event.end_date %></p>
+    <p><%= event.start_date.strftime("%e %b %Y %H:%M:%S%p") %></p>
+    <p><%= event.end_date.strftime("%e %b %Y %H:%M:%S%p") %></p>
     <p><%= event.venue %>, <%= event.location %></p>
   </div>
 <% end %>

@@ -1,9 +1,11 @@
+<% provide(:title, @event.title) %>
+
 <h1><%= @event.title %></h1>
 
 <div>
   <p><%= @event.description%></p>
-  <p><%= @event.start_date %></p>
-  <p><%= @event.end_date %></p>
+  <p><%= @event.start_date.strftime("%e %b %Y %H:%M:%S%p") %></p>
+  <p><%= @event.end_date.strftime("%e %b %Y %H:%M:%S%p") %></p>
   <p><%= @event.venue %></p>
   <p><%= @event.location %></p>
 </div>
