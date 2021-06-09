@@ -43,7 +43,7 @@ class EventsController < ApplicationController
     flash[:alert] = "Event je uspješno obrisan."
     redirect_to events_path
   end
-
+  
   private
     def event_params
       params.require(:event).permit(:title, :description, :start_date, :end_date, :venue, :location)
