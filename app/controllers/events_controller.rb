@@ -22,6 +22,21 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      flash[:notice] = "Event je updejtan!"
+      redirect_to @event
+    else
+      flash.now[:alert] = "Updejt nije uspio!"
+      render "edit"
+    end
+  end
+
 
   private
     def event_params
