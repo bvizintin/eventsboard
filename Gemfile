@@ -14,6 +14,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'better_errors', '~> 2.9', '>= 2.9.1'
 gem 'awesome_print', '~> 1.9', '>= 1.9.2'
+#gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+gem 'jquery-rails'
+gem 'bootstrap', '~> 5.0', '>= 5.0.1'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
