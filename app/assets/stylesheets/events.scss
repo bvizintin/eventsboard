@@ -42,19 +42,19 @@
 
 .event-venue {
   &:before {
-    @extend .fa-map-marker;
+    @extend .fa-map-marker !optional;
   }
 }
 
 .event-start {
   &:before {
-    @extend .fa-calendar;
+    @extend .fa-calendar !optional;
   }
 }
 
 .event-end {
   &:before {
-    @extend .fa-calendar-o;
+    @extend .fa-calendar-o !optional;
   }
 }
 
@@ -62,7 +62,7 @@
   font-size: 24px;
 
   &:before {
-    @extend .fa-compass;
+    @extend .fa-compass !optional;
   }
 }
 
@@ -70,7 +70,7 @@
   font-size: 24px;
 
   &:before {
-    @extend .fa-user;
+    @extend .fa-user !optional;
   }
 }
 
@@ -78,7 +78,7 @@
   font-size: 24px;
 
   &:before {
-    @extend .fa-tag;
+    @extend .fa-tag !optional;
   }
 }
 
@@ -94,7 +94,7 @@
   font-size: 24px;
 
   &:before {
-    @extend .fa-thumbs-o-up;
+    @extend .fa-thumbs-o-up !optional;
   }
 }
 
@@ -102,7 +102,7 @@
   font-size: 24px;
 
   &:before {
-    @extend .fa-thumbs-o-down;
+    @extend .fa-thumbs-o-down !optional;
   }
 }
 
@@ -135,7 +135,7 @@ a #dislike,
   font-size: 24px;
 
   &:before {
-    @extend .fa-users;
+    @extend .fa-users !optional;
   }
 }
 
@@ -148,7 +148,7 @@ a #dislike,
 // }
 
 .index-icons {
-  @extend .pull-right;
+  @extend .pull-right !optional;
   margin: 0;
   padding: 0;
   font-size: 16px;
