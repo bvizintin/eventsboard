@@ -9,7 +9,17 @@
 
   <div class="form-inputs">
     <div class="col-sm-6 offset-md-1">
-
+        <%= f.input :first_name,
+                    autofocus: true,
+                    placeholder: "Enter your First Name"%>
+        <%= f.input :last_name,
+                    placeholder: "Enter your Last Name"%>
+        <%= f.input :username,
+                    required: true,
+                    placeholder: "Enter your Username"%>
+          <%= f.input :organization_name,
+                    required: true,
+                    placeholder: "Enter your Organization"%>
         <%= f.input :email,
                     required: true,
                     autofocus: true,
