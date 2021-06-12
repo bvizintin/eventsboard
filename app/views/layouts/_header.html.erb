@@ -9,9 +9,8 @@
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="#">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
+
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Dropdown
@@ -23,14 +22,33 @@
           <li><a class="dropdown-item" href="#">Something else here</a></li>
         </ul>
       </li>
+
       <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>
     </ul>
+
     <form class="d-flex">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <li class="<%= "active" if current_page?("/users/edit")%>">
+          <%= link_to current_user.email, edit_user_registration_path %>
+        </li>
+        <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+      <% end %>
+
+      <% unless user_signed_in? %>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <li><%= link_to "Sign in", new_user_session_path %></li>
+      <% end %>
+    </ul>
+
+
+
   </div>
 </div>
 </nav>
