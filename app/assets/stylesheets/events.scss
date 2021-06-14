@@ -62,7 +62,7 @@
   font-size: 24px;
 
   &:before {
-    @extend .fa-user;
+    @extend .fa-user !optional;
   }
 }
 

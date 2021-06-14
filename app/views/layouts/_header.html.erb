@@ -35,10 +35,13 @@
 
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-        <li class="<%= "active" if current_page?("/users/edit")%>">
-          <%= link_to current_user.username, edit_user_registration_path %>
+        <li class="<%="active" if current_page?("/users/edit")%>">
+          <%= link_to current_user.username, edit_user_registration_path %></li>
+          <li class="<%="active" if current_page?("/users/#{current_user.id}")%>">
+            <%= link_to "My Events", user_path(current_user) %></li>
+        <li class="nav-item">
+          <a class="nav-link"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
         </li>
-        <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
       <% end %>
 
       <% unless user_signed_in? %>

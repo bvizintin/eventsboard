@@ -23,7 +23,7 @@
           <td><%= link_to dogadaj.title, event_path(dogadaj)  %></td>
           <td><%= dogadaj.start_date.strftime("%e %b %Y %H:%M:%S%p") %></td>
           <td><%= dogadaj.end_date.strftime("%e %b %Y %H:%M:%S%p") %></td>
-          <td><%= :status %></td>
+          <td><%= event_status(dogadaj) %></td>
           <td class="align-middle" style="text-align: right">
             <%=link_to "Edit", edit_event_path(dogadaj), class: "edit" %>
             <%=link_to "Delete", event_path(dogadaj), method: :delete, data: {confirm: "Sure?"}, class: "delete" %>
