@@ -1,0 +1,39 @@
+<%# provide(:username, @user.username) %>
+<header>
+  <h1 id="show-title"><%= @user.first_name %> <%= @user.last_name %></h1>
+  <h4><%= @user.username %></h4>
+</header>
+
+<% if @user.organized_events.any? %>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @user.organized_events.each do |dogadaj|%>
+        <tr>
+          <td><%= link_to dogadaj.title, event_path(dogadaj)  %></td>
+          <td><%= dogadaj.start_date.strftime("%e %b %Y %H:%M:%S%p") %></td>
+          <td><%= dogadaj.end_date.strftime("%e %b %Y %H:%M:%S%p") %></td>
+          <td><%= :status %></td>
+          <td class="align-middle" style="text-align: right">
+            <%=link_to "Edit", edit_event_path(dogadaj), class: "edit" %>
+            <%=link_to "Delete", event_path(dogadaj), method: :delete, data: {confirm: "Sure?"}, class: "delete" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+<p>This user has no ogranized events</p>
+
+<% end %>

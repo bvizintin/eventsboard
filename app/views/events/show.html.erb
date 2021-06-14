@@ -3,10 +3,21 @@
   <h1 id="show-title"><%= @event.title %></h1>
 
   <ul class="actions">
-    <li><%= link_to "Edit Event", edit_event_path(@event), class: "edit" %></li>
-    <li><%= link_to "Delete Event", event_path(@event), method: :delete, data: {confirm: "Are you sure?"}, class: "delete" %></li>
+    <li><%= link_to "Edit Event", edit_event_path(@event), class: "edit" %> | <%= link_to "Delete Event", event_path(@event), method: :delete, data: {confirm: "Are you sure?"}, class: "delete" %></li>
   </ul>
 </header>
+
+
+<div class="row">
+  <div class="col-sm-3 offset-md-10">
+    <div class="sidebar">
+      <h3 class="discover">Organizer</h3>
+      <ul class="nav nav-pills nav-stacked">
+        <%= link_to @event.organizer.username, user_path(@event.organizer) %>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <div>
   <p><%= @event.description%></p>
