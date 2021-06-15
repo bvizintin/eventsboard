@@ -6,10 +6,13 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <%= link_to "Home", events_path %>
+      <li class="nav-item active">
+        <a class="nav-link"><%= link_to "Home", events_path, class: "nav-link" %></a>
       </li>
 
+      <li class="nav-item">
+             <a class="nav-link" href="#">Link</a>
+           </li>
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -36,17 +39,17 @@
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
         <li class="<%="active" if current_page?("/users/edit")%>">
-          <%= link_to current_user.username, edit_user_registration_path %></li>
+          <%= link_to current_user.username, edit_user_registration_path, class: "nav-link" %></li>
           <li class="<%="active" if current_page?("/users/#{current_user.id}")%>">
-            <%= link_to "My Events", user_path(current_user) %></li>
+            <%= link_to "My Events", user_path(current_user), class: "nav-link" %></li>
         <li class="nav-item">
-          <a class="nav-link"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
+          <a class="nav-link"><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %></a>
         </li>
       <% end %>
 
       <% unless user_signed_in? %>
-        <li><%= link_to "Sign up", new_user_registration_path %></li>
-        <li><%= link_to "Sign in", new_user_session_path %></li>
+        <li><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
+        <li><%= link_to "Sign in", new_user_session_path, class: "nav-link" %></li>
       <% end %>
     </ul>
 
