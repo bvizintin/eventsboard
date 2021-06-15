@@ -32,7 +32,7 @@ gem 'will_paginate', '~> 3.3'
 gem 'bootstrap-will_paginate', '~> 1.0'
 gem 'pundit', '~> 2.1' #for authorization
 #gem 'fog', '~> 2.2' # cloud service lib, potreban za Carrierwave
-
+#gem 'fog-aws', '~> 3.10'   #ako Fog ne radi, probaj ovaj
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :authorize_owner!, only: [:edit, :update, :destroy]
+  #before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
   def new
     @event = Event.new
+    authorize @event, :new?
   end
 
   def create
@@ -22,6 +23,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    authorize @event, :show?
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "This page does not exist."
       redirect_to events_path
@@ -29,6 +31,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.order(created_at: :desc)
+    authorize @events, :index?                        #ovo je autorizacija iz Pundit Gema. koristimo je umjesto authorize_owner
   end
 
   def edit
@@ -61,14 +64,14 @@ class EventsController < ApplicationController
       params.require(:event).permit(:title, :description, :start_date, :end_date, :venue, :location)
     end
 
-    def authorize_owner!
-      @event = Event.find(params[:id])
-      authenticate_user!
-
-      unless @event.organizer == current_user
-        flash[:alert] = "You don't have permission to #{action_name} the #{@event.title.upcase}"
-        redirect_to events_path
-      end
-    end
+    # def authorize_owner!
+    #   @event = Event.find(params[:id])
+    #   authenticate_user!
+    #
+    #   unless @event.organizer == current_user
+    #     flash[:alert] = "You don't have permission to #{action_name} the #{@event.title.upcase}"
+    #     redirect_to events_path
+    #   end
+    # end
 
 end
