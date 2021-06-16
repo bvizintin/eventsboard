@@ -16,7 +16,26 @@ class EventPolicy < ApplicationPolicy
   def create?
     user.present?
   end
-  
 
+  def new?
+    create?
+  end
+
+  def update?
+    user.present? && user == event.organizer
+  end
+
+  def edit?
+    update?
+  end
+
+  def destroy?
+    user.present? && user == event.organizer
+  end
+
+  private
+  def event
+    record            #tumači punditu da njegov record nama predstavlja event
+  end
 
 end

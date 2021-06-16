@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 
+
   before_action :authenticate_user!, except: [:index, :show]
   #before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
@@ -10,6 +11,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    authorize @event, :create?
+
     @event.organizer = current_user
 
     if @event.save
@@ -36,6 +39,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    authorize @event, :update?
     rescue ActiveRecord::RecordNotFound
     flash[:alert] = "This page does not exist."
     redirect_to events_path
@@ -43,6 +47,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+    authorize @event, :update?
     if @event.update(event_params)
       flash[:notice] = "Event je updejtan!"
       redirect_to @event
@@ -54,6 +59,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
+    authorize @event, :destroy?
     @event.destroy
     flash[:alert] = "Event je uspješno obrisan."
     redirect_to events_path
