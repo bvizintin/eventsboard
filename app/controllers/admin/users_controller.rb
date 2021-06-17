@@ -4,4 +4,8 @@ class Admin::UsersController < Admin::ApplicationController
     @users = User.order(:email)
   end
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> admin_area
 end
