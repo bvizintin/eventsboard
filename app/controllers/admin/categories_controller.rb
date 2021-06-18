@@ -1,7 +1,9 @@
 class Admin::CategoriesController < Admin::ApplicationController
 
-  def index               #ova metoda je ovdje "definirana", ali zapravo da bi ona radila i bila skroz definirana, potrebno je kreirati index.html.erb metodu u views/admin/categories. To dvoje ide zajedno na neki način.
+  before_action :set_category, only: [:edit, :update, :destroy]
 
+  def index               #ova metoda je ovdje "definirana", ali zapravo da bi ona radila i bila skroz definirana, potrebno je kreirati index.html.erb metodu u views/admin/categories. To dvoje ide zajedno na neki način.
+    @categories = Category.all
   end
 
   def new
@@ -26,7 +28,13 @@ class Admin::CategoriesController < Admin::ApplicationController
   end
 
   def update
-
+    if @category.update(category_params)
+      flash[:notice] = "Category updated."
+      redirect_to admin_categories_path
+    else
+      flash.now[:alert] = "Unable to update category!"
+      render "edit"
+    end
   end
 
   def destroy
@@ -41,5 +49,9 @@ class Admin::CategoriesController < Admin::ApplicationController
     params.require(:category).permit(:name, :summary)
   end
 
+
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
 end
