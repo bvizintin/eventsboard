@@ -1,0 +1,26 @@
+<% provide(:title, @category.name) %>
+
+<header>
+  <h1 class="text-uppercase"><%= @category.name %> Events</h1>
+
+  <ul class="actions">
+    <% admins_only do %>
+      <li><%= link_to "Edit", edit_admin_category_path(@category), class: "edit" %> | <%= link_to "Delete", admin_category_path(@category), method: :delete, data: {confirm: "Sure?"}, class: "delete" %></li>
+    <% end %>
+  </ul>
+</header>
+
+
+
+  <div class="row">
+    <div class="col-sm-3 offset-md-10">
+      <div class="sidebar">
+        <h3 class="discover">Categories</h3>
+        <% @categories.each do |category| %>
+          <ul class="nav nav-pills nav-stacked">
+            <li><%= link_to category.name, category_path(category) %></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
