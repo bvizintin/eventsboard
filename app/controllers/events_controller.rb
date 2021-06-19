@@ -25,7 +25,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.friendly.find(params[:id])
     authorize @event, :show?
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "This page does not exist."
@@ -39,7 +39,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    @event = Event.friendly.find(params[:id])
     authorize @event, :update?
     rescue ActiveRecord::RecordNotFound
     flash[:alert] = "This page does not exist."
@@ -47,7 +47,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find(params[:id])
+    @event = Event.friendly.find(params[:id])
     authorize @event, :update?
     if @event.update(event_params)
       flash[:notice] = "Event je updejtan!"
@@ -59,7 +59,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
+    @event = Event.friendly.find(params[:id])
     authorize @event, :destroy?
     @event.destroy
     flash[:alert] = "Event je uspješno obrisan."
