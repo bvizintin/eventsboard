@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 
 
   def show
-    @categories = Category.all
+    @categories = Category.order(:name)
   end
 
 

@@ -212,8 +212,10 @@ h1#show-title,
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-   background: #e0336b;
+//   background: #e0336b;
+   color:  #e0336b;
    font-weight: bold;
+   text-decoration: none;
 }
 
 .sidebar li > a {

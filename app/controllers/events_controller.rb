@@ -33,6 +33,7 @@ class EventsController < ApplicationController
   end
 
   def index
+    @categories = Category.order(:name)
     @events = Event.order(created_at: :desc)
     authorize @events, :index?                        #ovo je autorizacija iz Pundit Gema. koristimo je umjesto authorize_owner
   end
