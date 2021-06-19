@@ -20,6 +20,7 @@
 </div>
 
 <div>
+  <%= image_tag @event.image.url, class: "event-image", height: 300, width: 800 if @event.image %>
   <p><%= @event.description%></p>
   <p><%= @event.start_date.strftime("%e %b %Y %H:%M:%S%p") %></p>
   <p><%= @event.end_date.strftime("%e %b %Y %H:%M:%S%p") %></p>
