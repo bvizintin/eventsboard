@@ -33,8 +33,12 @@ class EventsController < ApplicationController
   end
 
   def index
+    if params[:query].present?
+      @events = Events.search(params[:query])
+    else
+      @events = Event.order(created_at: :desc)
+    end
     @categories = Category.order(:name)
-    @events = Event.order(created_at: :desc)
     authorize @events, :index?                        #ovo je autorizacija iz Pundit Gema. koristimo je umjesto authorize_owner
   end
 
