@@ -18,8 +18,13 @@
 
 
     <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
+            <%= form_tag events_path, class: "form-control me-2", method: :get do %>
+            <%= text_field_tag :query, params[:query], placeholder: "Search events...", autofocus: true, class: "form-control" %>
+            <%= submit_tag "Find", class: "btn btn-outline-success" %>
+            <% if params[:query].present? %>
+            <li><a class="nav-link"><%= link_to "Clear", events_path, class: "nav-link"  %></a></li>
+            <% end %>
+      <% end %>
     </form>
 
     <div class="d-flex justify-content-end">
