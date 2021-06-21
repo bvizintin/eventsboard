@@ -25,6 +25,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @categories = Category.order(:name)
     @event = Event.friendly.find(params[:id])
     authorize @event, :show?
     rescue ActiveRecord::RecordNotFound
@@ -43,7 +44,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.friendly.find(params[:id])
+      @event = Event.friendly.find(params[:id])
     authorize @event, :update?
     rescue ActiveRecord::RecordNotFound
     flash[:alert] = "This page does not exist."
@@ -51,7 +52,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.friendly.find(params[:id])
+      @event = Event.friendly.find(params[:id])
     authorize @event, :update?
     if @event.update(event_params)
       flash[:notice] = "Event je updejtan!"
@@ -72,7 +73,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:title, :description, :start_date, :end_date, :venue, :location, :image)
+      params.require(:event).permit(:title, :description, :start_date, :end_date, :venue, :location, :image, :category_id)
     end
 
     # def authorize_owner!
