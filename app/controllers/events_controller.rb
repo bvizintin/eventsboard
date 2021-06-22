@@ -27,6 +27,8 @@ class EventsController < ApplicationController
   def show
     @categories = Category.order(:name)
     @event = Event.friendly.find(params[:id])
+    @comment = Comment.new
+    @comment.event_id = @event.id
     authorize @event, :show?
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "This page does not exist."
