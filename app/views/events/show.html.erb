@@ -30,4 +30,18 @@
 
 <p><%= link_to "Edit Event", edit_event_path(@event) %> | <%= link_to "Delete This Event", event_path(@event), method: :delete, data: {confirm: "Are you sure?"} %> </p>
 
+
+<header>
+  <h3>Comments</h3>
+</header>
+
+<div id="comments">
+  <% if @event.comments.any? %>
+    <%= render @event.comments %>
+  <% else %>
+    <p>No comments yet...</p>
+  <% end %>
+</div>
+
+
 <%= render "comments/form", event: @event, comment: @comment %>
