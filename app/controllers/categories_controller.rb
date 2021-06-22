@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
 
   def show
     @categories = Category.order(:name)
+    @events = Event.all
   end
 
 
