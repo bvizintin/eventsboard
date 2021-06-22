@@ -44,4 +44,4 @@
 </div>
 
 
-<%= render "comments/form", event: @event, comment: @comment %>
+<%= render "comments/form", event: @event, comment: @comment if policy(@comment).create? %>
