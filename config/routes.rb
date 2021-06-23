@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     resources :events do
       resources :comments, only: [:create]   #ovo se zove "nested resources"
+      resources :attendances, only: [:create]
     end
 
 end
