@@ -14,4 +14,9 @@ class Event < ApplicationRecord
   validates :location, presence: true
 
   mount_uploader :image, ImageUploader
+
+  def seats_left
+    seats - attendees.count
+  end
+
 end

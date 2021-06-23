@@ -15,6 +15,11 @@
       <ul class="nav nav-pills nav-stacked">
         <%= link_to @event.organizer.username, user_path(@event.organizer) %>
       </ul>
+      <h3 class="attendees">Attending</h3>
+      <ul class="nav nav-pills nav-stacked">
+        <%= @event.attendees.count %>
+      </ul>
+      <span class="badge rounded-pill bg-primary"><%= pluralize(@event.seats_left, "Seat") %> available</span>
     </div>
   </div>
 </div>

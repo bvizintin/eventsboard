@@ -22,7 +22,8 @@
     <%= f.input :end_date, as: :datetime, start_year: Date.today.year, ampm: true, order: [:day, :month, :year]%>
     <%= f.input :venue %>
     <%= f.input :location %>
-    <%= f.association :category, label: "Select category", prompt: true %> 
+    <%= f.association :category, label: "Select category", prompt: true %>
+    <%= f.input :seats, label: "Capacity", hint: "Maximum number of attendees." %>
     <p><%= f.input :image, as: :file, label: "Upload Image" %></p>
 
     <p> </p>
