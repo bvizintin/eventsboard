@@ -14,6 +14,7 @@
         <th>Start Date</th>
         <th>End Date</th>
         <th>Status</th>
+        <th>Capacity</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -25,6 +26,7 @@
           <td><%= dogadaj.start_date.strftime("%e %b %Y %H:%M:%S%p") %></td>
           <td><%= dogadaj.end_date.strftime("%e %b %Y %H:%M:%S%p") %></td>
           <td><%= event_status(dogadaj) %></td>
+          <td><%= dogadaj.seats_left %></td>
           <td class="align-middle" style="text-align: right">
             <%=link_to "Edit", edit_event_path(dogadaj), class: "edit" if policy(dogadaj).edit? %>
             <%=link_to "Delete", event_path(dogadaj), method: :delete, data: {confirm: "Sure?"}, class: "delete" if policy(dogadaj).destroy?%>

@@ -19,4 +19,6 @@ class Event < ApplicationRecord
     seats - attendees.count
   end
 
+
+
 end

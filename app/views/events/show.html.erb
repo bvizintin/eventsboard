@@ -3,7 +3,7 @@
   <h1 id="show-title"><%= @event.title %></h1>
 
   <ul class="actions">
-    <li><%= link_to "Edit Event", edit_event_path(@event), class: "edit" if policy(@event).edit? %> | <%= link_to "Delete Event", event_path(@event), method: :delete, data: {confirm: "Are you sure?"}, class: "delete" if policy(@event).destroy? %> | <%= link_to "Register", event_attendances_path(@event), method: :post, class: "new"  %></li>
+    <li><%= link_to "Edit Event", edit_event_path(@event), class: "edit" if policy(@event).edit? %> | <%= link_to "Delete Event", event_path(@event), method: :delete, data: {confirm: "Are you sure?"}, class: "delete" if policy(@event).destroy? %> |<% if @event.seats_left > 0 %> <%= link_to "Register", event_attendances_path(@event), method: :post, class: "new"  %> <% else %> <span class="badge rounded-pill bg-danger pull-right">No seats left</span> <% end %></li>
   </ul>
 </header>
 
@@ -19,7 +19,7 @@
       <ul class="nav nav-pills nav-stacked">
         <%= @event.attendees.count %>
       </ul>
-      <span class="badge rounded-pill bg-primary"><%= pluralize(@event.seats_left, "Seat") %> available</span>
+      <span class="badge rounded-pill <%= (@event.seats_left > 0) ? "bg-primary" : "bg-danger"%>"><%= pluralize(@event.seats_left, "Seat") %> available</span>
     </div>
   </div>
 </div>
