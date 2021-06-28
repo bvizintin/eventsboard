@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     root "application#index"
     resources :users, only: [:index]
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :comments, only: [:index]
+    resources :attendances, only: [:index]
   end
     devise_for :users
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

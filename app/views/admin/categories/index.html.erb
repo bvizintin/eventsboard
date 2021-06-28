@@ -23,7 +23,7 @@
       <tr>
         <td><%= category.name %></td>
         <td><%= category.created_at.strftime("%e %b %Y %H:%M:%S%p") %></td>
-        <td><%= "Events" %></td>
+        <td><%= category.events.count %></td>
         <td><%= link_to "View", category_path(category) %> | <%= link_to "Edit", edit_admin_category_path(category) %> | <%= link_to "Delete", admin_category_path(category), method: :delete, data: {confirm: "Are you sure?"}  %></td>
       </tr>
     <% end %>

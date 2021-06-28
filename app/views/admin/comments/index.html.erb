@@ -1,0 +1,28 @@
+<header>
+  <h1>All Comments</h1>
+</header>
+
+
+
+<table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Body</th>
+        <th>Created At</th>
+        <th>Event</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @comments.each do |komentar|%>
+        <tr>
+          <td><%= komentar.author.full_name if komentar.author %></td>
+          <td><%= truncate(komentar.body, length: 30) %></td>
+          <td><%= komentar.created_at.strftime("%e %b %Y %H:%M:%S%p") %></td>
+          <td><%= link_to komentar.event.title, event_path(komentar.event) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+
+</table>
