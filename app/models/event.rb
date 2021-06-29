@@ -8,6 +8,7 @@ class Event < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :attendances, dependent: :destroy
   has_many :attendees, through: :attendances
+  has_many :likes, dependent: :destroy
 
   validates :title, presence: true, length: {minimum: 5}
   validates :venue, presence: true
@@ -19,6 +20,12 @@ class Event < ApplicationRecord
     seats - attendees.count
   end
 
+  def likes_total
+    likes.where(like: "like").count           #izgleda da može i sa .self i bez .self
+  end
 
+  def dislikes_total
+    self.likes.where(like: "dislike").count    #izgleda da može i sa .self i bez .self
+  end
 
 end

@@ -15,11 +15,23 @@
       <ul class="nav nav-pills nav-stacked">
         <%= link_to @event.organizer.username, user_path(@event.organizer) %>
       </ul>
+      <hr>
       <h3 class="attendees">Attending</h3>
       <ul class="nav nav-pills nav-stacked">
         <%= @event.attendees.count %>
       </ul>
       <span class="badge rounded-pill <%= (@event.seats_left > 0) ? "bg-primary" : "bg-danger"%>"><%= pluralize(@event.seats_left, "Seat") %> available</span>
+    </div>
+    <hr>
+    <div class="sidebar">
+      <h3 class="likes">Likes</h3>
+      <%= link_to event_likes_path(@event, like: "like"), method: :post do %>
+        <span id="like"><%= @event.likes_total %></span>
+      <% end %> &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to event_likes_path(@event, like: "dislike"), method: :post do %>
+        <span id="dislike"><%= @event.dislikes_total %></span>
+      <% end %>
+       
     </div>
   </div>
 </div>

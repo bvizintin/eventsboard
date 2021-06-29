@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     root "events#index" #ovo postavlja root stranicu da nebude Rails defaultni welcome page
 
     resources :events do
+      resources :likes, only: [:create]
       resources :comments, only: [:create]   #ovo se zove "nested resources"
       resources :attendances, only: [:create]
     end

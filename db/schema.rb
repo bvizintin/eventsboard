@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_23_170510) do
+ActiveRecord::Schema.define(version: 2021_06_29_170107) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer "event_id", null: false
@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(version: 2021_06_23_170510) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "user_id", null: false
+    t.string "like"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_likes_on_event_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -92,4 +102,6 @@ ActiveRecord::Schema.define(version: 2021_06_23_170510) do
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "events", "users"
+  add_foreign_key "likes", "events"
+  add_foreign_key "likes", "users"
 end
