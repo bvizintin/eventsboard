@@ -39,7 +39,7 @@ class EventsController < ApplicationController
     if params[:query].present?
       @events = Event.search(params[:query])
     else
-      @events = Event.order(created_at: :desc).paginate(page: params[:page], per_page: 2)
+      @events = Event.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     end
     @categories = Category.order(:name)
     authorize @events, :index?                        #ovo je autorizacija iz Pundit Gema. koristimo je umjesto authorize_owner

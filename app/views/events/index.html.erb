@@ -39,7 +39,7 @@
 </div>
 
 <% @events.each do |event| %>
-  <div class="col-sm-9 pull-left">
+  <div class="col-sm-9">
     <%= link_to event_path(event) do %>
     <div class="events">
       <div class="row">
@@ -64,5 +64,5 @@
 
 
 <div class="text-center">
-  <%= will_paginate @events %>  
+  <%= will_paginate @events%>
 </div>
