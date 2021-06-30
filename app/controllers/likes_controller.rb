@@ -4,9 +4,14 @@ class LikesController < ApplicationController
   skip_after_action :verify_authorized
 
   def create
+
     @like = @event.likes.where(like: params[:like], user_id: current_user).create
 
-    flash[:notice] = "You #{params[:like]} this event."
+    if @like.valid?
+      flash[:notice] = "You #{params[:like]} this event."
+    else
+      flash[:alert] = "You already #{@event.likes[0][:like]} this event."
+    end
     redirect_to event_path(@event)
   end
 
