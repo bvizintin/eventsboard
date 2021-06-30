@@ -24,6 +24,7 @@
     <%= f.input :location %>
     <%= f.association :category, label: "Select category", prompt: true %>
     <%= f.input :seats, label: "Capacity", hint: "Maximum number of attendees." %>
+    <%= f.input :tag_list, label: "Tags", hint: "Separate tags with comma" %>
     <p><%= f.input :image, as: :file, label: "Upload Image" %></p>
 
     <p> </p>
