@@ -31,7 +31,17 @@
       <%= link_to event_likes_path(@event, like: "dislike"), method: :post do %>
         <span id="dislike"><%= @event.dislikes_total %></span>
       <% end %>
-       
+    </div>
+    <hr>
+    <div class="sidebar">
+      <h3 class="tags">Tags</h3>
+<!--    <% @event.tags.each do |tagic| %>     ovo sve je moja varijanta -->
+<!--        <%= fa_icon "hashtag" %><%= tagic.name %>    obzirom da smo u Tag modelu definirali to_s metodu, umjesto tagic.name mogu napisati samo tagic, ili tagic.to_s -->
+<!--    <% end %> -->
+<!--ovo je Ernestova varijanta -->
+        <% if @event.tags.any? %>           <!--izgleda da je ovo bespotreban uvjet -->
+          <%= render @event.tags %>         <!--ovo aktivira _tag.html.erb partial skriptu -->
+        <% end %>
     </div>
   </div>
 </div>
