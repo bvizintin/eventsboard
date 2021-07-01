@@ -39,7 +39,7 @@
       <li><%= link_to "#" do %>
           <%= fa_icon "tag" %>
           <span>Tags</span>
-          <span class="badge rounded-pill bg-success pull-right">tags</span>
+          <span class="badge rounded-pill bg-success pull-right"><%= @tags.count %></span>
           <% end %>
       </li>
       <li><%= link_to admin_comments_path do %>
