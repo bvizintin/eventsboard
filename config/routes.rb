@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:show]
     resources :tags, only: [:show]
 
-    root "events#index" #ovo postavlja root stranicu da nebude Rails defaultni welcome page
+    root "home#index" #ovo postavlja root stranicu da nebude Rails defaultni welcome page
 
     resources :events do
       resources :likes, only: [:create]
