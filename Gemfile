@@ -22,6 +22,7 @@ gem 'bootstrap', '~> 5.0', '>= 5.0.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
 gem 'simple_form', '~> 5.1'
 gem 'devise', '~> 4.8'  #for authentication
+gem 'graphql'
 
 
 gem 'friendly_id', '~> 5.4', '>= 5.4.2' #user friendly URL and SEO
@@ -45,6 +46,7 @@ group :development do
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'rack-mini-profiler', '~> 2.0'
+  gem 'graphiql-rails'
 end
 
 group :test do
