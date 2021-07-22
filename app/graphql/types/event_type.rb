@@ -1,6 +1,6 @@
 module Types
   class EventType < Types::BaseObject
-    field :id, ID, null: false
+    field :id, Integer, null: false             #ovdje sam umjesto ID stavio Integer
     field :title, String, null: true
     field :description, String, null: true
     field :start_date, GraphQL::Types::ISO8601DateTime, null: true

@@ -23,6 +23,12 @@ module Types
           User.find(id)
         end
 
+    # /events---------- ovo sam ja dodao, ne znam jel potrebno
+        field :events, [Types::EventType], null: false
+
+        def events
+          Event.all
+        end
 
   end
 end

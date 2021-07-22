@@ -7,5 +7,11 @@ module Types
     field :username, String, null: true
     field :organization_name, String, null: true
     field :admin, Boolean, null: true
+    field :events, [Types::EventType], null: true
+    field :events_count, Integer, null: true
+
+    def events_count
+      object.events.size
+    end
   end
 end
